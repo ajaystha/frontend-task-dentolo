@@ -1,5 +1,13 @@
 import { ReactElement } from "react";
 
+import Users from "./views/Users/Users";
+
+import s from "./App.module.css";
+
 export default function App(): ReactElement {
-  return <div>App Page</div>;
+  return (
+    <div className={s.AppContainer}>
+      <Users />
+    </div>
+  );
 }

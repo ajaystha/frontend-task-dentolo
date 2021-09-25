@@ -1,0 +1,6 @@
+.AppContainer {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 5%;
+}
