@@ -19,6 +19,7 @@
     "paths": {
       "@views/*": ["views/*"],
       "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
       "@api/*": ["api/*"],
       "@shared/*": ["shared/*"]
     }

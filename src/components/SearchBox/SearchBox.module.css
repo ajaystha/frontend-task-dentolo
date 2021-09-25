@@ -1,0 +1,21 @@
+h5 {
+  margin-bottom: 0.6rem;
+}
+
+.InputWrapper {
+  position: relative;
+}
+
+.InputWrapper input {
+  padding-right: 2rem;
+}
+
+.IconButtonClose {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

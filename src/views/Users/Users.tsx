@@ -1,17 +1,19 @@
-import { ReactElement, useState, useEffect } from "react";
-import useSWR from "swr";
+import { ReactElement, useState, useEffect } from 'react';
+import useSWR from 'swr';
 
-import { fetcher } from "@api/http";
-import { User } from "@shared/types";
+import { fetcher } from '@api/http';
+import { User } from '@shared/types';
 
-import UsersList from "./UsersList";
+import SearchBox from '@components/SearchBox';
+import UsersList from './UsersList';
 
-import s from "./Users.module.css";
+import s from './Users.module.css';
 
 function Users(): ReactElement {
   const [users, setUsers] = useState<User[]>([]);
+  const [userSearch, setUserSearch] = useState<string>('');
 
-  const { data } = useSWR("/users", fetcher);
+  const { data, isValidating } = useSWR('/users', fetcher);
 
   useEffect(() => {
     if (!data) return;
@@ -21,9 +23,22 @@ function Users(): ReactElement {
     setUsers([...u]);
   }, [data]);
 
+  let filteredUsers = [...users];
+  if (userSearch) {
+    // filter data when searching
+    filteredUsers = users.filter((user) => user.name.toLowerCase().includes(userSearch));
+  }
+
+  const showLoader = isValidating && !data;
+
   return (
     <div className={`shadow-01dp ${s.UserContainer}`}>
-      <UsersList users={users} />
+      <SearchBox
+        placeholder="Search by name"
+        onSearch={(text: string) => setUserSearch(text.toLowerCase())}
+      />
+
+      <UsersList users={filteredUsers} showLoader={showLoader} isFetching={isValidating} />
     </div>
   );
 }
