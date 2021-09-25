@@ -1,8 +1,27 @@
 .UserContainer {
   padding: 16px;
-  min-width: 300px;
+  width: 350px;
 }
 
 .UserContainer > h5:not(:first-of-type) {
   margin-top: 2rem;
+}
+
+.IsButton {
+  cursor: pointer;
+}
+
+.UserDetailsModal {
+  margin-top: 8%;
+}
+
+.UserDetailsContainer {
+  padding: 1rem;
+  width: 325px;
+  background-color: #fff;
+}
+
+.UserDetailsContainer button {
+  margin-top: 2rem;
+  width: 100%;
 }

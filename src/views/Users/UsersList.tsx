@@ -2,18 +2,20 @@ import { ReactElement } from 'react';
 
 import { User } from '@shared/types';
 
-import ListItem from './ListItem';
 import NoResult from '@components/NoResult';
 import UsersListLoader from './UsersListLoader';
+
+import s from './Users.module.css';
 
 interface UsersListProps {
   users: User[];
   showLoader: boolean;
   isFetching: boolean;
+  onSelectUser: (usr: User) => void;
 }
 
 function UsersList(props: UsersListProps): ReactElement {
-  const { users, showLoader, isFetching } = props;
+  const { users, showLoader, isFetching, onSelectUser } = props;
 
   const isEmptyContent = !isFetching && !users.length;
 
@@ -28,9 +30,13 @@ function UsersList(props: UsersListProps): ReactElement {
       ) : (
         <ul className="green-blue-list">
           {users.map((usr) => (
-            <ListItem key={usr.id}>
+            <li
+              key={usr.id}
+              className={`green-blue-list-item ${s.IsButton}`}
+              onClick={() => onSelectUser(usr)}
+            >
               <span className="listing">{usr.name}</span>
-            </ListItem>
+            </li>
           ))}
         </ul>
       )}
