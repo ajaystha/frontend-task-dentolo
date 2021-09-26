@@ -22,21 +22,21 @@ function Modal(props: ModalProps): ReactElement {
   const modalRoot = document.getElementById('portal') as HTMLElement;
 
   return ReactDOM.createPortal(
-    <AnimatePresence initial={false} exitBeforeEnter={true}>
-      {isOpen ? (
+    <AnimatePresence initial={false} exitBeforeEnter={false}>
+      {isOpen && (
         <Backdrop hideOnClickOutside={hideOnClickOutside} onClose={onClose}>
           <motion.div
             className={`${s.Modal} ${className || ''}`}
             onClick={(ev) => ev.stopPropagation()}
             variants={dropDown}
-            initial="initial"
+            initial="hidden"
             animate="visible"
-            exit="exit"
+            exit="hidden"
           >
             {children}
           </motion.div>
         </Backdrop>
-      ) : null}
+      )}
     </AnimatePresence>,
     modalRoot
   );

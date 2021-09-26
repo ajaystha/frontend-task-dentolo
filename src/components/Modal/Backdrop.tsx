@@ -25,9 +25,9 @@ export default function Backdrop(props: BackdropProps): ReactElement {
       className={s.Backdrop}
       onClick={handleClickOutside}
       variants={fadeIn}
-      initial="initial"
+      initial="hidden"
       animate="visible"
-      exit="exit"
+      exit="hidden"
     >
       {children}
     </motion.div>
