@@ -38,11 +38,9 @@ function Users(): ReactElement {
 
   return (
     <>
-      {selectedUser && (
-        <Modal className={s.UserDetailsModal} onClose={modalCloseHandler}>
-          <UserDetails user={selectedUser} onCloseModal={modalCloseHandler} />
-        </Modal>
-      )}
+      <Modal className={s.UserDetailsModal} isOpen={!!selectedUser} onClose={modalCloseHandler}>
+        <UserDetails user={selectedUser} onCloseModal={modalCloseHandler} />
+      </Modal>
 
       <div className={`shadow-01dp ${s.UserContainer}`}>
         <SearchBox

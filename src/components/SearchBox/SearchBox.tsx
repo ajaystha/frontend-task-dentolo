@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, ChangeEvent, useEffect, useState } from 'react';
 
 import useDebounce from '@hooks/useDebounce';
 
@@ -14,7 +14,7 @@ interface SearchBoxProps {
 function SearchBox(props: SearchBoxProps): ReactElement {
   const { placeholder, onSearch } = props;
 
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState<string>('');
   const debouncedSearchText = useDebounce(searchText);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function SearchBox(props: SearchBoxProps): ReactElement {
           className="input-primary input-md"
           placeholder={placeholder}
           value={searchText}
-          onChange={(ev) => setSearchText(ev.target.value)}
+          onChange={(ev: ChangeEvent<HTMLInputElement>) => setSearchText(ev.target.value)}
         />
 
         {searchText && (

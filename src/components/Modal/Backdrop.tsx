@@ -1,4 +1,7 @@
 import { ReactElement, ReactNode } from 'react';
+import { motion } from 'framer-motion';
+
+import { fadeIn } from '@shared/motions';
 
 import s from './Modal.module.css';
 
@@ -18,9 +21,16 @@ export default function Backdrop(props: BackdropProps): ReactElement {
   };
 
   return (
-    <div className={s.Backdrop} onClick={handleClickOutside}>
+    <motion.div
+      className={s.Backdrop}
+      onClick={handleClickOutside}
+      variants={fadeIn}
+      initial="initial"
+      animate="visible"
+      exit="exit"
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 

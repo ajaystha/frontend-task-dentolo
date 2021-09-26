@@ -1,6 +1,8 @@
 import { ReactElement } from 'react';
+import { motion } from 'framer-motion';
 
 import { User } from '@shared/types';
+import { listVariant, listItemVariant } from '@shared/motions';
 
 import NoResult from '@components/NoResult';
 import UsersListLoader from './UsersListLoader';
@@ -28,17 +30,23 @@ function UsersList(props: UsersListProps): ReactElement {
       {!showLoader && isEmptyContent ? (
         <NoResult />
       ) : (
-        <ul className="green-blue-list">
+        <motion.ul
+          className="green-blue-list"
+          variants={listVariant}
+          initial="hidden"
+          animate="visible"
+        >
           {users.map((usr) => (
-            <li
+            <motion.li
               key={usr.id}
               className={`green-blue-list-item ${s.IsButton}`}
               onClick={() => onSelectUser(usr)}
+              variants={listItemVariant}
             >
               <span className="listing">{usr.name}</span>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       )}
     </>
   );
