@@ -15,30 +15,31 @@ export default function UserDetails(props: UserDetailsProps): ReactElement {
   return (
     <div className={`shadow-01dp ${s.UserDetailsContainer}`}>
       <h5>User Details</h5>
+
       <ul className="green-blue-list">
         <li className="green-blue-list-item">
-          <div className="listing">
+          <div className="listing" data-testid="test-name">
             <span className="text-capitalize">Name: </span>
             <strong>{user?.name || 'N/A'}</strong>
           </div>
         </li>
 
         <li className="green-blue-list-item">
-          <div className="listing">
+          <div className="listing" data-testid="test-username">
             <span className="text-capitalize">Username: </span>
             <strong>{user?.username || 'N/A'}</strong>
           </div>
         </li>
 
         <li className="green-blue-list-item">
-          <div className="listing">
+          <div className="listing" data-testid="test-email">
             <span className="text-capitalize">Email: </span>
             <strong>{user?.email || 'N/A'}</strong>
           </div>
         </li>
 
         <li className="green-blue-list-item">
-          <div className="listing">
+          <div className="listing" data-testid="test-website">
             <span className="text-capitalize">Website: </span>
             <a href={user?.website} target="_blank">
               <strong>{user?.website || 'N/A'}</strong>

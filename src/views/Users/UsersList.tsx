@@ -39,6 +39,8 @@ function UsersList(props: UsersListProps): ReactElement {
           {users.map((usr) => (
             <motion.li
               key={usr.id}
+              role="button"
+              aria-label="open user details"
               className={`green-blue-list-item ${s.IsButton}`}
               onClick={() => onSelectUser(usr)}
               variants={listItemVariant}

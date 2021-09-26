@@ -27,6 +27,7 @@ function SearchBox(props: SearchBoxProps): ReactElement {
 
       <div className={s.InputWrapper}>
         <input
+          data-testid="search-input"
           type="text"
           className="input-primary input-md"
           placeholder={placeholder}
