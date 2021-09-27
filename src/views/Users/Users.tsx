@@ -16,25 +16,27 @@ function Users(): ReactElement {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [userSearch, setUserSearch] = useState<string>('');
 
-  const { data, isValidating } = useSWR('/users', fetcher);
+  const { data, isValidating } = useSWR('/users', fetcher, {
+    revalidateOnFocus: false,
+  });
 
   useEffect(() => {
     if (!data) return;
 
     // get 5 users
-    const updatedUsersList = data.slice(0, 5);
+    const updatedUsersList: User[] = data.slice(0, 5);
     setUsers([...updatedUsersList]);
   }, [data]);
 
   const modalCloseHandler = () => setSelectedUser(null);
 
-  let filteredUsers = [...users];
+  let filteredUsers: User[] = [...users];
   if (userSearch) {
     // filter data when searching
     filteredUsers = users.filter((user) => user.name.toLowerCase().includes(userSearch));
   }
 
-  const showLoader = !data && isValidating;
+  const showLoader: boolean = !data && isValidating;
 
   return (
     <>

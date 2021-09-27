@@ -19,7 +19,7 @@ interface UsersListProps {
 function UsersList(props: UsersListProps): ReactElement {
   const { users, showLoader, isFetching, onSelectUser } = props;
 
-  const isEmptyContent = !isFetching && !users.length;
+  const isEmptyContent: boolean = !isFetching && !users.length;
 
   return (
     <>
