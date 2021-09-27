@@ -1,6 +1,6 @@
 import { ReactElement, ChangeEvent, useEffect, useState } from 'react';
 
-import useDebounce from '@hooks/useDebounce';
+// import useDebounce from '@hooks/useDebounce';
 
 import CloseIcon from '@components/Icons/Close';
 
@@ -15,11 +15,15 @@ function SearchBox(props: SearchBoxProps): ReactElement {
   const { placeholder, onSearch } = props;
 
   const [searchText, setSearchText] = useState<string>('');
-  const debouncedSearchText = useDebounce(searchText);
+  // const debouncedSearchText = useDebounce(searchText, 0);
 
   useEffect(() => {
-    onSearch(debouncedSearchText);
-  }, [debouncedSearchText]);
+    onSearch(searchText);
+  }, [searchText]);
+
+  // useEffect(() => {
+  //   onSearch(debouncedSearchText);
+  // }, [debouncedSearchText]);
 
   return (
     <>
